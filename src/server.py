@@ -18,20 +18,20 @@ def root():
 @app.post("/create_url")
 def create_url(entriee: newUrl):
     
-    if [x for x in sqliteDB.get_all_urls() if x["id_number"]=="V410Z8"]:
+    if [x for x in sqliteDB.get_all_urls() if x["url"]==entriee.url]:
+        return { "message": "the an alias has already been created for that url"}    
+    else:
         sqliteDB.add_url(entriee.url, entriee.alias)
         return { "url": entriee.url, "alias": entriee.alias }
-    else:
-        return { "message": "the an alias has already been created for that url"}
     
 
 @app.get("/delete_url/{alias}")
 def delete_url(alias: str):
-    try:
-        sqliteDB.delete_url(alias)
-        return { "message": "the shorten url has be deleted successfully"}
     
-    except:
+    if [x for x in sqliteDB.get_all_urls() if x["alias"]==alias]:
+        sqliteDB.delete_url(alias)
+        return { "message": "the shorten url has be deleted successfully"}    
+    else:
         return { "message": "the url is not found" }
     
 
@@ -50,5 +50,5 @@ def list_all():
 
 
 if __name__ == "__main__":
-    uvicorn.run("server:app", port=8000, reload=True)
+    uvicorn.run("server:app", port=8080, reload=True)
     

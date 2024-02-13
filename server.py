@@ -2,9 +2,7 @@ from fastapi import FastAPI, Request
 import uvicorn
 import sqliteDB as helpers
 
-
 app = FastAPI()
-
 db = "database.db"
 
 @app.get("/")
@@ -18,16 +16,14 @@ async def create_url(request: Request):
     data = await request.json()
     
     if "alias" not in data:
-        data["alias"] = helpers.generateHash()
-    
-    
+        data["alias"] = ""
     if helpers.already_exist(db, data["alias"]):
-        return { "message": "please create a unique alias"}    
-    else:
-        helpers.add_url(db, data["url"], data["alias"])
-        return { "url": data["url"], "alias": data["alias"] }
+        return { "message": "please create a unique alias"} 
     
-
+    helpers.add_url(db, data["url"], data["alias"])
+    return { "url": data["url"], "alias": data["alias"] }
+    
+    
 @app.get("/delete_url/{alias}")
 def delete_url(alias: str):
     

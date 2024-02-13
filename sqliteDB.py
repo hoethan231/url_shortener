@@ -20,6 +20,9 @@ def add_url(db_file, url, alias):
         cursor = connection.cursor()
         with connection:
             cursor.execute("INSERT INTO urls (url, alias) VALUES (?,?);", (url, alias))
+            if alias is "":
+                cursor.execute("UPDATE urls SET alias = ? WHERE alias = ''", 
+                                (generateHash(url,cursor.execute("SELECT timestamp FROM urls WHERE alias = ''").fetchall()[0][0]),))
     except:
         print("some err")
         
@@ -48,7 +51,7 @@ def get_all_urls(db_file):
         cursor = connection.cursor()
         with connection:
             urls = cursor.execute("SELECT * FROM urls;").fetchall()
-            output = [{"id": row[0], "url": row[1], "alias": row[2]} for row in urls]       
+            output = [{"id": row[0], "url": row[1], "alias": row[2], "timestamp": row[3]} for row in urls]       
             return output 
     except:
         return print("some err")

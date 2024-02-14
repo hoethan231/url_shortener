@@ -1,9 +1,13 @@
 from fastapi import FastAPI, Request
+from args import get_args
 import uvicorn
 import sqliteDB as helpers
+import logging
+import time
 
 app = FastAPI()
 db = "database.db"
+args = get_args()
 
 @app.get("/")
 def root():
@@ -48,5 +52,12 @@ def list_all():
     return helpers.get_all_urls(db)
 
 
+logging.Formatter.converter = time.gmtime
+logging.basicConfig(
+    format="%(asctime)s.%(msecs)03dZ %(levelname)s:%(name)s:%(message)s",
+    datefmt="%Y-%m-%dT%H:%M:%S",
+    level= logging.ERROR - (args.verbose*10),
+)
+
 if __name__ == "__main__":
-    uvicorn.run("server:app", port=8080, reload=True)
+    uvicorn.run("server:app", host=args.host, port=args.port, reload=args.reload)

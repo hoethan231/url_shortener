@@ -6,8 +6,8 @@ import logging
 import time
 
 app = FastAPI()
-db = "database.db"
 args = get_args()
+db = args.db_path
 
 @app.get("/")
 def root():

@@ -13,7 +13,6 @@ db = args.db_path
 def root():
     return({ "message": "hello world" })
 
-
 @app.post("/create_url")
 async def create_url(request: Request):
     
@@ -21,34 +20,46 @@ async def create_url(request: Request):
     
     if "alias" not in data:
         data["alias"] = ""
+        
     if helpers.already_exist(db, data["alias"]):
+        
+        logging.error(f"The alias: {data["alias"]} provided was not unique")
         return { "message": "please create a unique alias"} 
     
-    helpers.add_url(db, data["url"], data["alias"])
-    return { "url": data["url"], "alias": data["alias"] }
+    helpers.add_url(db, data["url"], data["alias"]) 
+    logging.debug(f"Request recieved for creating url with {data["url"]} and {data["alias"]}")
     
+    return { "url": data["url"], "alias": data["alias"] }
     
 @app.get("/delete_url/{alias}")
 def delete_url(alias: str):
+    
+    logging.debug(f"Request recieved for deleting url with alias: {alias}")
     
     if helpers.already_exist(db, alias):
         helpers.delete_url(db, alias)
         return { "message": "the shorten url has be deleted successfully"}    
     else:
+        logging.error(f"The url with the alias: {alias} was not found")
         return { "message": "the url is not found" }
     
-
 @app.get("/find/{alias}")
 def find_url(alias: str):
+    
+    logging.debug(f"Request recieved for finding the url with alias: {alias}")
+    
     try: 
         return {"url": helpers.get_url(db, alias) }
     
     except:
+        logging.error(f"Request recieved for deleting url with alias: {alias}")
         return { "message": "the url is not found" }
     
 
 @app.get("/list_all")
 def list_all():
+    
+    logging.debug(f"Request recieved for listing all urls")
     return helpers.get_all_urls(db)
 
 

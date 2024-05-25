@@ -20,7 +20,7 @@ def add_url(db_file, url, alias):
         cursor = connection.cursor()
         with connection:
             cursor.execute("INSERT INTO urls (url, alias) VALUES (?,?);", (url, alias))
-            if alias is "":
+            if alias == "":
                 cursor.execute("UPDATE urls SET alias = ? WHERE alias = ''", 
                                 (generateHash(url,cursor.execute("SELECT timestamp FROM urls WHERE alias = ''").fetchall()[0][0]),))
     except:

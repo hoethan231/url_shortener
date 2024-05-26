@@ -9,4 +9,4 @@ COPY . .
 
 EXPOSE 8080
 
-CMD ["python3", "server.py", "--reload", "true", "--db_path", ".", "--port", "8080"]
+CMD ["python3", "server.py", "--reload=true", "--db_path=./database.db", "--port=8080", "--host=0.0.0.0"]

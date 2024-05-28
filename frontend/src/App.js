@@ -1,11 +1,26 @@
-import './App.css';
+import React, { useState } from "react";
+import Searchbar from "./components/Searchbar/Searchbar";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-        <h1>Hallo</h1>
-    </div>
-  );
-}
+export default function App() {
 
-export default App;
+    const [input, setInput] = useState("");
+
+    return (
+        <div className="home-container">
+            <nav className="navbar">
+                <div className="logo"><h1>Shorter</h1></div>
+                <div></div>
+            </nav>
+            <div className="middle-container">
+                <div>
+                    <h1>Right Side</h1>
+                </div>
+                <div>
+                    <h1>Hello from the left side</h1>
+                </div>
+            </div>
+        </div>
+    );
+
+};

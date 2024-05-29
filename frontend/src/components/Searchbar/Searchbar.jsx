@@ -12,7 +12,7 @@ const Searchbar = ({onSearch}) => {
 
     return (
         <form className="input-wrapper" onClick={handleSubmit}>
-            <input value={query} onChange={(e) => setQuery(e.target.value)}/>
+            <input value={query} placeholder="Paste Here!" onChange={(e) => setQuery(e.target.value)}/>
         </form>
     );
 };

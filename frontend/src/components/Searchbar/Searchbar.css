@@ -1,0 +1,15 @@
+.input-wrapper {
+    border-radius: 0.5vh;
+    background: #e4e4e4fb;
+    padding: 14px;
+    display: flex;
+    width: 97%;
+}
+
+input {
+    font-family: "Rubik", sans-serif;
+    outline: none;
+    border: none;
+    background: transparent;
+    flex: 1;
+}

@@ -19,7 +19,14 @@ export default function App() {
                     
                 </div>
                 <div className="right-container">
-
+                    <form className="form-wrapper">
+                        <div className="form-header"><h1>Create Link</h1></div>
+                        <div className="form-body">
+                            <label>Enter Long Url Here:</label>
+                            <Searchbar onSearch={setInput}/>
+                            <button type="submit">Create!</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

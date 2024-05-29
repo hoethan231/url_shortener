@@ -11,8 +11,8 @@ body {
     font-optical-sizing: auto;
     font-style: normal;
     color: #FFFAFA;
-    background-color: #6e88c4;
-};
+    background-image: linear-gradient(to right, #6e88c4, #4b5b82);
+}
 
 /* Navbar */
 nav {
@@ -20,12 +20,36 @@ nav {
     height: 15vh;
     align-items: center;
     margin-left: 10vh;
-};
+}
 
-/* Middle */
+/* Home */
 .middle-container {
     display: flex;
     align-content: center;
-    justify-content: center;
-    height: 100vh;
+    justify-content: space-between;
+    height: 85vh;
+    padding: 0, 10vh;
 }
+
+/* Left Text */
+.left-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-container h1 {
+    font-size: 8vh;
+}
+
+.left-container h4 {
+    font-size: 2vh;
+    color: #3e4a6e;
+}
+
+.left-container span {
+    color: #3e4a6e;
+}
+

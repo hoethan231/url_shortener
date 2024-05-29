@@ -13,11 +13,13 @@ export default function App() {
                 <div></div>
             </nav>
             <div className="middle-container">
-                <div>
-                    <h1>Right Side</h1>
+                <div className="left-container">
+                    <h1>SHORTEN YOUR <span>URL</span></h1>
+                    <h4>Shorter allows you to shrink long url links for you to use and share!</h4>
+                    
                 </div>
-                <div>
-                    <h1>Hello from the left side</h1>
+                <div className="right-container">
+
                 </div>
             </div>
         </div>

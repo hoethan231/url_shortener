@@ -8,7 +8,7 @@ const Form = ({onSearch}) => {
         <form className="form-wrapper">
             <div className="form-header"><h1>Create Link</h1></div>
             <div className="form-body">
-                <label>Enter Long Url Here:</label>
+                <label>Enter Long URL Here:</label>
                 <Searchbar onSearch={onSearch}/>
                 <button type="submit">Create!</button>
             </div>

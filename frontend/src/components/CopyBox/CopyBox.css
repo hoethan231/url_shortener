@@ -1,0 +1,49 @@
+.container {
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+}
+
+.label {
+    margin-bottom: 1vh;
+    box-sizing: border-box;
+    font-size: 2vh;
+}
+
+.copy-text {
+    background-color: #e4e4e4fb;
+    position: relative;
+    padding: 0.4vh;
+    border: 2px solid #c8c8c8;
+    border-radius: 10px;
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.copy-text input.text {
+    padding: 1vh;
+    flex: 1;
+    width: 100%;
+}
+
+.copy-text button {
+    background-color: transparent;
+    border-radius: 1vh;
+    border: none;
+    padding: 1.2vh;
+    cursor: pointer;
+}
+
+.copy-text button:hover{
+    background-color: #d2d2d2;
+    border-radius: 1vh; 
+    border: none;
+    padding: 1.2vh;
+    cursor: pointer;
+    outline: none;
+}
+
+.fa-solid.fa-check {
+    color: #187736;
+}

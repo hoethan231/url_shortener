@@ -1,0 +1,28 @@
+.wrapper {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-family: "Rubik", sans-serif;
+    font-weight: 600;
+    color: #FFFAFA;
+    margin-left: 3vh;
+    cursor: pointer;
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+}
+
+.info-close {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0,1,0,1);
+}
+
+.info-open{
+    height: auto;
+    max-height: 9999;
+    transition: all 0.5s cubic-bezier(0,1,0,1);
+}
+

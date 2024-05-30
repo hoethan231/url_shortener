@@ -20,12 +20,16 @@
     font-size: 3vh;
 }
 
+.error-message {
+    font-size: 1.5vh;
+    color: red;
+    margin-top: 1vh;
+}
+
 .form-body {
     margin-top: 2vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 2vh;
 }
 
 form label {
@@ -33,6 +37,7 @@ form label {
     font-weight: 600;
     margin-bottom: 1vh;
     color: #2c3755;
+    margin-top: 2vh;
 }
 
 form input[type="text"] {
@@ -42,6 +47,7 @@ form input[type="text"] {
     width: 100%;
     border: 1px solid #4b5b82;
     border-radius: 0.5vh;
+    
 }
 
 form button {

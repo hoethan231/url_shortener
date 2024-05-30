@@ -49,6 +49,7 @@ nav {
 .left-container h4 {
     font-size: 2vh;
     color: #3e4a6e;
+    margin-bottom: 5vh;
 }
 
 .left-container span {
@@ -61,5 +62,4 @@ nav {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #6e88c4;
 }

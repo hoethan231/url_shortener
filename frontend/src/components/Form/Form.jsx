@@ -1,12 +1,12 @@
 import React from "react";
 import Searchbar from "../Searchbar/Searchbar.jsx";
-import "./Form.css"
+import "./Form.css";
 
 const Form = ({onSearch}) => {
 
     return (
         <form className="form-wrapper">
-            <div className="form-header"><h1>Create Link</h1></div>
+            <div className="form-header"><h2>Create Link</h2></div>
             <div className="form-body">
                 <label>Enter Long URL Here:</label>
                 <Searchbar onSearch={onSearch}/>

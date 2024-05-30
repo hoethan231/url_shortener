@@ -1,6 +1,4 @@
 .wrapper {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
     font-family: "Rubik", sans-serif;
     font-weight: 600;
     color: #FFFAFA;
@@ -8,10 +6,24 @@
     cursor: pointer;
 }
 
-.title {
+.title-open {
     display: flex;
     justify-content: space-between;
-    width: 95%;
+    width: 100%;
+    background-color: #2c3755;
+    padding: 2vh;
+    border-radius: 1.3vh 1.3vh 0 0;
+    font-size: 2.4vh;
+}
+
+.title-close {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #2c3755;
+    padding: 2vh;
+    border-radius: 1.3vh 1.3vh 1.3vh 1.3vh;
+    font-size: 2.4vh;
 }
 
 .info-close {
@@ -24,5 +36,16 @@
     height: auto;
     max-height: 9999;
     transition: all 0.5s cubic-bezier(0,1,0,1);
+    background-color: #FFFAFA;
+    color: #2c3755;
+    padding: 2vh;
+    width: 100%;
+    border-radius: 0 0 1.3vh 1.3vh;
 }
 
+.urls {
+    display: flex;
+    justify-content: space-between;
+    width: 97%;
+    gap: 10vh;
+}

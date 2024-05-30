@@ -7,6 +7,8 @@ const AccordionMenu = () => {
     return (
         <div className="accordion-wrapper">
             <AccordionPart/>
+            <AccordionPart/>
+            <AccordionPart/>
         </div>
     );
 

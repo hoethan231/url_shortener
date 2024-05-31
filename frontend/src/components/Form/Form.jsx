@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Form.css";
 
-const Form = ({ onFormSubmit }) => {
+const Form = ({ handleFormSubmit }) => {
 
     const [alias, setAlias] = useState("");
     const [url, setUrl] = useState("");
@@ -12,10 +12,10 @@ const Form = ({ onFormSubmit }) => {
         e.preventDefault();
 
         if(alias !== "" && url !== "")  {
-            axios.post("http://localhost:8080/create_url", { alias: alias, url: url } ,{withCredentials: true})
+            axios.post("http://localhost:8080/create_url", { alias: alias, url: url }, {withCredentials: true})
             .then((response) => {
                 console.log(response);
-                onFormSubmit;
+                handleFormSubmit();
                 setAlias("");
                 setUrl("");
                 setErrorMessage("");
@@ -33,7 +33,7 @@ const Form = ({ onFormSubmit }) => {
     return (
         <form className="form-wrapper" onSubmit={handleSubmit}>
             <div className="form-header"><h2>Create Link</h2></div>
-            <div className="form-body">
+            <div className="form-body">     
                 <label>Alias Here:</label>
                 <input type="text" value={alias} placeholder="Paste Here!" onChange={(e) => setAlias(e.target.value)}/>
                 <label>Long URL Here:</label>

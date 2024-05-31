@@ -12,7 +12,6 @@ export default function App() {
         axios.get("http://localhost:8080/list_all", {withCredentials: true})
             .then((response) => {
                 setUrls(response.data);
-                console.log("fetched")
             })
             .catch((error) => {
                 console.log(error);
@@ -33,10 +32,10 @@ export default function App() {
                 <div className="left-container">
                     <h1>SHORTEN YOUR <span>URL</span></h1>
                     <h4>Shorter allows you to shrink long url links for you to use and share!</h4>
-                    {(urls.length > 0) && <Form />}
+                    {(urls.length > 0) && <Form handleFormSubmit={fetchUrls}/>}
                 </div>
                 <div className="right-container">
-                    {(urls.length === 0) && <Form onFormSubmit={fetchUrls}/>}
+                    {(urls.length === 0) && <Form handleFormSubmit={fetchUrls}/>}
                     {(urls.length > 0) && <AccordionMenu links={urls}/>}
                 </div>
             </div>

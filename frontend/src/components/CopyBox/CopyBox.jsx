@@ -21,7 +21,7 @@ const CopyBox = ({ label, link }) => {
             <div className="copy-text">
                 <input type="text" className="text" value={link} readOnly/>
                 <button onClick={handleCopy}>
-                    <i className={clicked ? "fa-solid fa-check" : "fa-regular fa-copy"}></i>
+                    <i className={clicked ? "fa-solid fa-check" : "fa-regular fa-copy fa-xs"}></i>
                 </button>
             </div>
         </div>

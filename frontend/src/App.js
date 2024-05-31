@@ -36,7 +36,7 @@ export default function App() {
                 </div>
                 <div className="right-container">
                     {(urls.length === 0) && <Form handleFormSubmit={fetchUrls}/>}
-                    {(urls.length > 0) && <AccordionMenu links={urls}/>}
+                    {(urls.length > 0) && <AccordionMenu links={urls} onUrlDelete={fetchUrls}/>}
                 </div>
             </div>
         </div>

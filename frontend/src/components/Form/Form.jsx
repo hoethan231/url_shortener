@@ -8,11 +8,37 @@ const Form = ({ handleFormSubmit }) => {
     const [url, setUrl] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
 
+    const isValidUrl = (string) => {
+        try {
+            new URL(string);
+            return true;
+        } catch (error) {
+            return false;
+        }
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if(alias !== "" && url !== "")  {
-            axios.post("http://localhost:8080/create_url", { alias: alias, url: url }, {withCredentials: true})
+        if (alias === "" || url === "") {
+            setErrorMessage("Please fill out all fields!");
+            return;
+        }
+
+        if (!isValidUrl(url)) {
+            setErrorMessage("Please enter a valid URL!");
+            return;
+        }
+
+        const invalidChars = "{}|\^[]`;/?:@&=+$,";
+        for(let i=0; i<alias.length; i++) {
+            if(invalidChars.includes(alias.charAt(i))) {
+                setErrorMessage("Please do not use invalid or special characters in your alias");
+                return;
+            }
+        }
+
+        axios.post("http://localhost:8080/create_url", { alias: alias.replace(" ", "-"), url: url.replace(" ", "-") }, { withCredentials: true })
             .then((response) => {
                 console.log(response);
                 handleFormSubmit();
@@ -21,13 +47,10 @@ const Form = ({ handleFormSubmit }) => {
                 setErrorMessage("");
             })
             .catch((error) => {
-                const errorMsg = error.response?.data?.message || error.message || "An error occurred";
+                const errorMsg = error.response?.data?.message || error.response.data.detail || error.message || "An error occurred";
                 setErrorMessage(errorMsg);
                 console.log(error);
             });
-        } else {
-            setErrorMessage("Please fill out all fields!");
-        }
     };
 
     return (

@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from args import get_args
 import uvicorn
@@ -33,7 +33,7 @@ async def create_url(request: Request):
     if helpers.already_exist(db, data["alias"]):
         
         logging.error(f'The alias: {data["alias"]} provided was not unique')
-        return { "message": "please create a unique alias"} 
+        raise HTTPException(status_code=400, detail="Please enter a unique alias")
     
     helpers.add_url(db, data["url"], data["alias"]) 
     logging.debug(f'Request recieved for creating url with {data["url"]} and {data["alias"]}')

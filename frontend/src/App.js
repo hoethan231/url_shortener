@@ -1,12 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import AccordionMenu from "./components/AccordionMenu/AccordionMenu.jsx";
 import Form from "./components/Form/Form.jsx";
 import "./App.css";
 
 export default function App() {
 
-    const [input, setInput] = useState("");
-    const [urls, setUrls] = useState([1]);
+    const [urls, setUrls] = useState([]);
+
+    const fetchUrls = () => {
+        axios.get("http://localhost:8080/list_all", {withCredentials: true})
+            .then((response) => {
+                setUrls(response.data);
+                console.log("fetched")
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
+    useEffect(() => {
+        fetchUrls();
+    }, []);
 
     return (
         <div className="home-container">
@@ -18,11 +33,11 @@ export default function App() {
                 <div className="left-container">
                     <h1>SHORTEN YOUR <span>URL</span></h1>
                     <h4>Shorter allows you to shrink long url links for you to use and share!</h4>
-                    {(urls.length > 0) && <Form onSearch={setInput}/>}
+                    {(urls.length > 0) && <Form />}
                 </div>
                 <div className="right-container">
-                    {(urls.length === 0) && <Form onSearch={setInput}/>}
-                    {(urls.length > 0) && <AccordionMenu/>}
+                    {(urls.length === 0) && <Form onFormSubmit={fetchUrls}/>}
+                    {(urls.length > 0) && <AccordionMenu links={urls}/>}
                 </div>
             </div>
         </div>

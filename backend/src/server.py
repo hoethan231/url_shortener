@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 from args import get_args
 import uvicorn
 import sqliteDB as helpers
@@ -8,6 +9,14 @@ import time
 app = FastAPI()
 args = get_args()
 db = args.db_path
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
 
 @app.get("/")
 def root():

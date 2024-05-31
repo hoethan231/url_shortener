@@ -2,13 +2,13 @@ import React from "react";
 import AccordionPart from "./AccordionPart";
 import "./AccordionMenu.css";
 
-const AccordionMenu = () => {
+const AccordionMenu = ({ links }) => {
 
     return (
         <div className="accordion-wrapper">
-            <AccordionPart/>
-            <AccordionPart/>
-            <AccordionPart/>
+            {links.map((link, i) => {
+                return (<AccordionPart key={i} link={link}/>);
+            })}
         </div>
     );
 

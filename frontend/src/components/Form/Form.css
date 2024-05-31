@@ -42,12 +42,11 @@ form label {
 
 form input[type="text"] {
     padding: 1vh;
-    font-size: 2vh;
-    margin-bottom: 2vh;
-    width: 100%;
-    border: 1px solid #4b5b82;
+    font-size: 1.5vh;
+    width: 97%;
+    border: 1px solid #acacac;
     border-radius: 0.5vh;
-    
+    background: #e4e4e4fb;
 }
 
 form button {

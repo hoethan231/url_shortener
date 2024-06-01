@@ -11,8 +11,8 @@ def create_table(db_file: str):
                 url TEXT,
                 alias TEXT,
                 timestamp DATETIME DEFAULT CURRENT_TIMESTAMP);""")
-    except:
-        print("some err")
+    except Exception as e:
+        return print(e)
              
 def add_url(db_file, url, alias):     
     try:
@@ -23,8 +23,8 @@ def add_url(db_file, url, alias):
             if alias == "":
                 cursor.execute("UPDATE urls SET alias = ? WHERE alias = ''", 
                                 (generateHash(url,cursor.execute("SELECT timestamp FROM urls WHERE alias = ''").fetchall()[0][0]),))
-    except:
-        print("some err")
+    except Exception as e:
+        return print(e)
         
 def delete_url(db_file, alias):
     try:
@@ -32,8 +32,8 @@ def delete_url(db_file, alias):
         cursor = connection.cursor()
         with connection:
             cursor.execute("DELETE FROM urls WHERE alias = ?;", (alias, ))
-    except:
-        print("some err")
+    except Exception as e:
+        return print(e)
         
         
 def get_url(db_file, alias):
@@ -42,8 +42,8 @@ def get_url(db_file, alias):
         cursor = connection.cursor()
         with connection:
             return cursor.execute("SELECT * FROM urls WHERE alias = ?;", (alias, )).fetchall() 
-    except:
-        return print("some err")
+    except Exception as e:
+        return print(e)
         
 def get_all_urls(db_file):
     try:
@@ -53,8 +53,8 @@ def get_all_urls(db_file):
             urls = cursor.execute("SELECT * FROM urls;").fetchall()
             output = [{"id": row[0], "url": row[1], "alias": row[2], "timestamp": row[3]} for row in urls]       
             return output 
-    except:
-        return print("some err")
+    except Exception as e:
+        return print(e)
         
 def already_exist(db_file, alias):
     try:
@@ -62,8 +62,8 @@ def already_exist(db_file, alias):
         cursor = connection.cursor()
         with connection:
             return (len(cursor.execute("SELECT * FROM urls WHERE alias = ?", (alias,)).fetchall()) != 0)
-    except:
-        return print("some err:")
+    except Exception as e:
+        return print(e)
         
 def generateHash(url, timestamp):
     

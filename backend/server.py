@@ -5,9 +5,9 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'm
 
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from args import get_args
+from modules.args import get_args
 import uvicorn
-import sqliteDB as helpers
+import modules.sqliteDB as helpers
 import logging
 import time
 
